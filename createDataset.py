@@ -2,12 +2,9 @@ import subprocess
 import ast
 import json
 import requests
-from prepareStrains import prepare_strains
 from credentials import API_TOKEN,PARENT,DATAVERSE_SERVER,MAJOR_OR_MINOR
 import time
 
-
-#json_file_name = prepare_strains(66)
 
 def create_dataset(js_file_name):
     file = f'uploads/{js_file_name}.json'
@@ -59,6 +56,6 @@ def publish_dataset(js_file_name):
     curl_str = curl_return.decode("UTF-8")
     curl_return_data = ast.literal_eval(curl_str)
     curl_return_status = curl_return_data["status"]
-    print(f"\nStep 3: PUBLISH DATASET : {curl_return_status}")
-    print("===============COMPLETE=================")
+    print(f"Step 3: PUBLISH DATASET : {curl_return_status}")
+    print("*******COMPLETE*******")
     time.sleep(1.0)
