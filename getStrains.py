@@ -3,7 +3,8 @@ from requests_oauthlib import OAuth2Session
 from credentials import CLIENT_ID,CLIENT_SECRET,USERNAME,PASSWORD,API_VERSION,SERVER_URL,TOKEN_URL
 import requests
 import json
-import sys
+import os.path
+import time
 
 
 
@@ -50,7 +51,6 @@ def get_strain_by_id(record_id):
         response = requests.get(url, headers=header)
 
         if response.status_code == 200:
-            print("********STARTING********")
             content = response.content
             json_dic = json.loads(content)
             for key in json_dic:
@@ -58,17 +58,16 @@ def get_strain_by_id(record_id):
                     #print(json_dic[key])
                     json_file_name = json_dic[key]
 
-            with open(f"data/{json_file_name}.json","wb") as new_file:
+            directory = os.path.dirname(__file__)
+            file_path = os.path.join(directory,"data",json_file_name)
+
+            with open(f"{file_path}.json","wb") as new_file:
                 new_file.write(content)
 
-            print(f"Step 1: GET STRAIN : {response.status_code}:{response.reason}")
+            print(f"\nStep 1: GET STRAIN : {response.status_code}:{response.reason}")
             return json_file_name
 
         else:
             print(f"\nStep 1: ERROR  {response.status_code}:{response.reason} ")
             return False
 
-
-
-
-#get_strain_by_id(8768767687878766)
