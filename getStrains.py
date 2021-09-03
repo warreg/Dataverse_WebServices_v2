@@ -70,4 +70,3 @@ def get_strain_by_id(record_id):
         else:
             print(f"\nStep 1: ERROR  {response.status_code}:{response.reason} ")
             return False
-
