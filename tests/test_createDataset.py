@@ -7,13 +7,15 @@ class TestCreateDataset(unittest.TestCase):
     def test_create_dataset(self):
         doi = createDataset.create_dataset("MIRRI0000013")
         # pattern_exp: doi:10.21386/FK2/C6VMUM
-        result = re.search("^doi:\d+\.\d+\/.+",doi)
+        pattern = "^doi:\d+\.\d+\/.+"
+        result = re.search(pattern,doi)
         self.assertTrue(result)
 
 
     def test_upload_file(self):
         persistent_ID = createDataset.upload_file("MIRRI0000013")
-        result = re.search("^doi:\d+\.\d+\/.+",persistent_ID)
+        pattern = "^doi:\d+\.\d+\/.+"
+        result = re.search(pattern,persistent_ID)
         self.assertTrue(result)
 
 
