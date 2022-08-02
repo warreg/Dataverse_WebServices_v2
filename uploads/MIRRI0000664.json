@@ -1,0 +1,111 @@
+{
+   "datasetVersion": {
+      "metadataBlocks": {
+         "citation": {
+            "fields": [
+               {
+                  "value": "MIRRI0000664",
+                  "typeClass": "primitive",
+                  "multiple": false,
+                  "typeName": "title"
+               },
+               {
+                  "typeName": "alternativeURL",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "https://catalog.mirri.org/page/Strains_display/664"
+               },
+               {
+                  "value": [
+                     {
+                        "authorName": {
+                           "value": "BEA",
+                           "typeClass": "primitive",
+                           "multiple": false,
+                           "typeName": "authorName"
+                        },
+                        "authorAffiliation": {
+                           "value": "BEA",
+                           "typeClass": "primitive",
+                           "multiple": false,
+                           "typeName": "authorAffiliation"
+                        }
+                     }
+                  ],
+                  "typeClass": "compound",
+                  "multiple": true,
+                  "typeName": "author"
+               },
+               {
+                  "value": [
+                     {
+                        "datasetContactEmail": {
+                           "typeClass": "primitive",
+                           "multiple": false,
+                           "typeName": "datasetContactEmail",
+                           "value": "v.robert@cbs.knaw.nl"
+                        },
+                        "datasetContactName": {
+                           "typeClass": "primitive",
+                           "multiple": false,
+                           "typeName": "datasetContactName",
+                           "value": "BEA"
+                        }
+                     }
+                  ],
+                  "typeClass": "compound",
+                  "multiple": true,
+                  "typeName": "datasetContact"
+               },
+               {
+                  "value": [
+                     {
+                        "dsDescriptionValue": {
+                           "value": "Organism type: Cyanobacteria ;  Taxon name: Daejeonella ;  Collection: BEA 0794B ;  Country: Spain ",
+                           "multiple": false,
+                           "typeClass": "primitive",
+                           "typeName": "dsDescriptionValue"
+                        }
+                     }
+                  ],
+                  "typeClass": "compound",
+                  "multiple": true,
+                  "typeName": "dsDescription"
+               },
+               {
+                  "value": [
+                     "Medicine, Health and Life Sciences"
+                  ],
+                  "typeClass": "controlledVocabulary",
+                  "multiple": true,
+                  "typeName": "subject"
+               },
+               {
+                  "value": [
+                     {
+                        "keywordValue": {
+                           "typeName": "keywordValue",
+                           "multiple": false,
+                           "typeClass": "primitive",
+                           "value": "Microorganism"
+                        }
+                     },
+                     {
+                        "keywordValue": {
+                           "typeName": "keywordValue",
+                           "multiple": false,
+                           "typeClass": "primitive",
+                           "value": "Cyanobacteria"
+                        }
+                     }
+                  ],
+                  "typeName": "keyword",
+                  "multiple": true,
+                  "typeClass": "compound"
+               }
+            ],
+            "displayName": "Citation Metadata"
+         }
+      }
+   }
+}
