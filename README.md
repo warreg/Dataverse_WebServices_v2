@@ -16,9 +16,10 @@
 ## Directories
 ### [data](data)
 ### [extra tools](extra_tools)
-### [logs](logs)
+### [logs](logs)
 ### [templates](templates)
 ### [tests](tests)
 ### [updates](updates)
 ### [uploads](uploads)
+
 
