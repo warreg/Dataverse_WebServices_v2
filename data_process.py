@@ -1,7 +1,7 @@
 import json
 import os.path
 from settings import DIR_PATH,DATAVERSE_SERVER
-from resources import DISPLAY_LINK
+from resources import DISPLAY_LINK,CONTACTS
 import logging.config
 import traceback
 
@@ -46,10 +46,25 @@ def get_data_values(js_file):
 
                 delivery_form = recuperator(record_details["Form"])
                 organism_type = recuperator(record_details["Organism type"])
+                collection = record_details["Data provided by"]["Value"]
 
                 # From MIRRI WS
                 data_values["delivery_form"] = delivery_form
                 data_values["organism_type"] = organism_type #4
+                contact_email = ""
+
+                for catalog, email in CONTACTS.items():
+                    if catalog == collection:
+                        contact_email = email
+                        if email ==  "":
+                            contact_email = "info@mirri.org"
+
+
+                try:
+                    country = record_details["Country"]["Value"][0]["Name"]["Value"]
+                except IndexError:
+                    country = "Unspecified"
+
 
                 # ************
                 # for vocab,link in VOCABULAR.items():
@@ -71,7 +86,7 @@ def get_data_values(js_file):
                 data_values["nagoya"] = record_details["Nagoya protocol restrictions and compliance conditions"]["Value"]
                 data_values["restrictions"]= record_details["Restrictions on use"]["Value"]
                 data_values["risk_group"] = record_details["Risk group"]["Value"]
-                data_values["country"] = record_details["Country"]["Value"][0]["Name"]["Value"] #4
+                data_values["country"] = country #4
                 data_values["geographic_origin"] = record_details["Geographic origin"]["Value"]
                 data_values["collector"] = record_details["Collector"]["Value"]
                 data_values["collection_date"] = record_details["Collection date"]["Value"]
@@ -79,14 +94,14 @@ def get_data_values(js_file):
                 data_values["isolation_date"] = record_details["Isolation date"]["Value"]
                 data_values["depositor"] = record_details["Depositor"]["Value"]
                 data_values["deposit_date"] = record_details["Deposit date"]["Value"]
-                data_values["provided_by"] = record_details["Data provided by"]["Value"] #2
+                data_values["provided_by"] = collection #2
                 data_values["collection_access_number"] = record_details["Collection accession number"]["Value"] #4
                 #data_values["growth_medium"] = record_details["Recommended growth medium"]["Value"][0]["Name"]["Value"]
                 data_values["growth_temp"] = record_details["Recommended growth temperature"]["MaxValue"]
                 data_values["record_id"] = data_dict["RecordId"] # equivalent accession_number_strip
                 data_values["record_name"] = data_dict["RecordName"] #1 #4
-                data_values["creator"] = data_dict["CreatorUserName"] #3
-                #data_values["contact"] = data_dict["Contact"]
+                #data_values["creator"] = data_dict["CreatorUserName"]
+                data_values["contact_email"] = contact_email #3
 
 
             except KeyError:
@@ -140,7 +155,7 @@ def update_template(data_values, update=False):
                 # Contact Name
                 citation_fields[3]["value"][0]["datasetContactName"]["value"] = data_values["provided_by"]
                 # Contact Email
-                citation_fields[3]["value"][0]["datasetContactEmail"]["value"] = data_values["creator"]
+                citation_fields[3]["value"][0]["datasetContactEmail"]["value"] = data_values["contact_email"]
                 # Description
                 citation_fields[4]["value"][0]["dsDescriptionValue"]["value"] = f'' \
                                                                                 f'Organism type: {data_values["organism_type"]} ;  ' \
