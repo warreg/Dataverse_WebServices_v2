@@ -44,6 +44,6 @@ The [resources.py](resources.py) contains dictionnaries
 
 The [settings.py](settings.py) contains all the credentials for performing connexion to MIRRIS-IS and dataverse API
 
-
+A summary of the process is discribed in this [DataMIRRI_Diagrams.pdf](DataMIRRI_Diagrams.pdf). 
 
 
