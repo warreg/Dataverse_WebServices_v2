@@ -14,15 +14,15 @@
 
 
 ## Directories
-The [data](data)  dir stores the raw data got from MIRRI-IS. 
+:floppy_disk: The [data](data)  dir stores the raw data got from MIRRI-IS. 
 
-The [extra tools](extra_tools) dir contains script for launching the domain1.
+:hammer_and_wrench: The [extra tools](extra_tools) dir contains script for launching the domain1.
 
-The [logs](logs) contains, I'm sure you have guessed :wink:
+:scroll: The [logs](logs) contains .... the logs :
 
-The [templates](templates) dir contains json files that serve as standard models for creating dataset and also for PATCH Doi 
+:clipboard: The [templates](templates) dir contains json files that serve as standard models for creating dataset and also for PATCH Doi 
 
-The [uploads](uploads) dir stores files ready to be uploaded into the dataverse :package: . 
+:open_file_folder: The [uploads](uploads) dir stores files ready to be uploaded into the dataverse :package: . 
 
 ## Process
 The script is divided in essentialy 8 jobs :
