@@ -22,8 +22,6 @@ The [logs](logs) contains, I'm sure you have guessed :wink:
 
 The [templates](templates) dir contains json files that serve as standard models for creating dataset and also for PATCH Doi 
 
-The [tests](tests) what they are , nothing more :man_technologist:
-
 The [uploads](uploads) dir stores files ready to be uploaded into the dataverse :package: . 
 
 ## Process
