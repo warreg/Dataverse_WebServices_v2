@@ -1,17 +1,5 @@
 # MIRRI Dataverse WebServices
 
-## Dependencies 
-- traceback, 
-- requests,
-- requests_oauthlib,
-- oauthlib.oauth2,
-- json,
-- os,
-- time,
-- logging.config,
-- subprocess,
-
-
 
 ## Directories
 :floppy_disk: The [data](data)  dir stores the raw data got from MIRRI-IS. 
