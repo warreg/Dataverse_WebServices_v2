@@ -77,7 +77,7 @@ def set_one_dataset(record_id):
 
     logger2.info(f"PROCESSING RECORD ID {record_id}")
     items_dir = os.path.join(DIR_PATH,"logs")
-    items_file = "treated_items.txt"
+    items_file = "resume.log"
 
     record_id_str = f"{record_id}"
     patch = "False"
@@ -151,7 +151,7 @@ def set_range_dataset(record_id, record_id_up):
 
 if __name__ == '__main__':
     #pass
-    run = set_one_dataset(25009)
+    run = set_one_dataset(25012)
     #update_dataset(646,"doi:10.82062/MIRRI/JBHH3Y")
     #send_patch_doi(651)
     #print(run)
