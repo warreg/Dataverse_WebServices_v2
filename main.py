@@ -85,15 +85,26 @@ def set_one_dataset(record_id):
     with open(f"{items_dir}/{items_file}","r") as file:
         ID_db = json.load(file)
 
-        if (record_id_str) not in ID_db.keys() or ID_db[record_id_str] == "False":
+        if (record_id_str) not in ID_db.keys() or ID_db[record_id_str]["published"] == "False":
+
             new_dataset = define_new_dataset(record_id)
-            ID_db[record_id_str] = f'{new_dataset["published"]}'
 
             # Patch  DOI
             doi = new_dataset["doi"]
             publi = new_dataset["published"]
             doi_dict = data_process.update_doi_template(doi)
             patch = bio_client.patch_doi(record_id, doi_dict, publi)
+
+            # Send to logs
+            timestp = time.time()
+
+            tab_values = {
+                "published" : publi,
+                "doi" : doi,
+                "timestp" : timestp
+            }
+            ID_db[record_id_str] = tab_values
+
 
         else:
             logger3.info("step 0 - Record_ID Already Processed")
@@ -140,11 +151,11 @@ def set_range_dataset(record_id, record_id_up):
 
 if __name__ == '__main__':
     #pass
-    run = set_one_dataset(20002)
+    run = set_one_dataset(25009)
     #update_dataset(646,"doi:10.82062/MIRRI/JBHH3Y")
     #send_patch_doi(651)
     #print(run)
-    #set_range_dataset(20000,2500)
+    #set_range_dataset(20000,25000)
     # print("Terminé ")
     #dv_client.create_dataset("MIRRI0000007")
 

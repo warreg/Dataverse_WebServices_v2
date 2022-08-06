@@ -1,7 +1,7 @@
 import json
 import os.path
 from settings import DIR_PATH,DATAVERSE_SERVER
-from resources import DISPLAY_LINK,CONTACTS
+from resources import DISPLAY_LINK,CONTACTS,VOCABULAR
 import logging.config
 import traceback
 
@@ -53,13 +53,14 @@ def get_data_values(js_file):
                 data_values["organism_type"] = organism_type #4
                 contact_email = ""
 
+                # Retrieve contact emails from resource/CONTACT
                 for catalog, email in CONTACTS.items():
                     if catalog == collection:
                         contact_email = email
                         if email ==  "":
                             contact_email = "info@mirri.org"
 
-
+                # Bypass the IndexError that occurs when country field is empty
                 try:
                     country = record_details["Country"]["Value"][0]["Name"]["Value"]
                 except IndexError:
@@ -67,16 +68,16 @@ def get_data_values(js_file):
 
 
                 # ************
-                # for vocab,link in VOCABULAR.items():
-                #     if vocab == organism_type:
-                #         vocab_link = link
-                #     if vocab == "Microorganism":
-                #         microorg_link = link
-                #         microorg_vocab = vocab
-                #
-                # data_values["microorg_vocab"] = microorg_vocab
-                # data_values["microorg_link"] = microorg_link
-                # data_values["vocab_link"] = vocab_link
+                for vocab,link in VOCABULAR.items():
+                    if vocab == organism_type:
+                        vocab_link = link
+                    if vocab == "Microorganism":
+                        microorg_link = link
+                        microorg_vocab = vocab
+
+                data_values["microorg_vocab"] = microorg_vocab
+                data_values["microorg_link"] = microorg_link
+                data_values["vocab_link"] = vocab_link
                 # ************
 
                 # From MIRRI WS
@@ -163,13 +164,13 @@ def update_template(data_values, update=False):
                                                                                 f'Collection: {data_values["collection_access_number"]} ;  ' \
                                                                                 f'Country: {data_values["country"]} '
                 # Microorganism keyword
-                # citation_fields[6]["value"][0]["keywordValue"]["value"] = data_values["microorg_vocab"]
+                citation_fields[6]["value"][0]["keywordValue"]["value"] = data_values["microorg_vocab"]
                 # Microorganism keyword vocabulary
-                # citation_fields[6]["value"][0]["keywordVocabularyURI"]["value"] = data_values["microorg_link"]
+                citation_fields[6]["value"][0]["keywordVocabularyURI"]["value"] = data_values["microorg_link"]
                 # Keyword
                 citation_fields[6]["value"][1]["keywordValue"]["value"] = data_values["organism_type"]
                 # Keyword vocabulary
-                # citation_fields[6]["value"][1]["keywordVocabularyURI"]["value"] = data_values["vocab_link"]
+                citation_fields[6]["value"][1]["keywordVocabularyURI"]["value"] = data_values["vocab_link"]
 
             #print("step 3: updates template OK")
             logger3.info("step 3 - UPDATE TEMPLATE:  OK")

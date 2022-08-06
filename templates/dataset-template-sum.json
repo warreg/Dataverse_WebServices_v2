@@ -83,11 +83,23 @@
                   "multiple": false,
                   "typeClass": "primitive",
                   "value": "Microorganism"
+                },
+                "keywordVocabularyURI": {
+                  "typeName": "keywordVocabularyURI",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "https://bioportal.bioontology.org/ontologies/ADCAD/?p=classes&conceptid=https://purl.dataone.org/odo/ADCAD_00025"
                 }
               },
               {
                 "keywordValue": {
                   "typeName": "keywordValue",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": ""
+                },
+                "keywordVocabularyURI": {
+                  "typeName": "keywordVocabularyURI",
                   "multiple": false,
                   "typeClass": "primitive",
                   "value": ""

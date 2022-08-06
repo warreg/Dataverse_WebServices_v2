@@ -2,9 +2,9 @@
 ### INRAE THESAURUS
 VOCABULAR =  {
     "Algae": "http://opendata.inrae.fr/thesaurusINRAE/c_6464",
-    "Archaea": "http://opendata.inrae.fr/thesaurusINRAE/c_25141",
-    "Bacteria": "http://opendata.inrae.fr/thesaurusINRAE/c_25099",
-    "Cyanobacteria": "http://opendata.inrae.fr/thesaurusINRAE/c_25511",
+    "Archaea": "https://lpsn.dsmz.de/domain/archaea",
+    "Bacteria": "https://lpsn.dsmz.de/domain/bacteria-1",
+    "Cyanobacteria": "https://lpsn.dsmz.de/phylum/cyanobacteria",
     "Filamentous Fungi": "http://opendata.inrae.fr/thesaurusINRAE/c_25985",
     "Phage": "http://opendata.inrae.fr/thesaurusINRAE/c_9195",
     "Plasmid": "http://opendata.inrae.fr/thesaurusINRAE/c_8143",
