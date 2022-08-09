@@ -64,7 +64,7 @@ def get_data_values(js_file):
                 try:
                     country = record_details["Country"]["Value"][0]["Name"]["Value"]
                 except IndexError:
-                    country = "Unspecified"
+                    country = ""
 
 
                 # ************
@@ -138,12 +138,27 @@ def update_template(data_values, update=False):
 
             with open(f"{template_dir}/{template_file}","r") as json_template:
                 template_dict = json.load(json_template)
-                # *****FOR UPDATE
+
+                # ************* FOR UPDATE *************
                 metadata_blocks = {}
                 metadata_blocks["metadataBlocks"] = template_dict["datasetVersion"]["metadataBlocks"]
-                # ******************
+                # **************************************
 
                 citation_fields = template_dict["datasetVersion"]["metadataBlocks"]["citation"]["fields"]
+
+                # ========== If country empty: don't mention it in description =================
+                if data_values["country"] == "":
+                    description = f'' \
+                                                                                f'Organism type: {data_values["organism_type"]} ;  ' \
+                                                                                f'Taxon name: {data_values["taxon_name"]} ;  ' \
+                                                                                f'Collection: {data_values["collection_access_number"]}   '
+                else:
+                    description = f'' \
+                                                                                f'Organism type: {data_values["organism_type"]} ;  ' \
+                                                                                f'Taxon name: {data_values["taxon_name"]} ;  ' \
+                                                                                f'Collection: {data_values["collection_access_number"]} ;  ' \
+                                                                                f'Country: {data_values["country"]} '
+                # ===============================================================================
 
                 # Title
                 citation_fields[0]["value"] = f'{data_values["record_name"]}'
@@ -158,11 +173,7 @@ def update_template(data_values, update=False):
                 # Contact Email
                 citation_fields[3]["value"][0]["datasetContactEmail"]["value"] = data_values["contact_email"]
                 # Description
-                citation_fields[4]["value"][0]["dsDescriptionValue"]["value"] = f'' \
-                                                                                f'Organism type: {data_values["organism_type"]} ;  ' \
-                                                                                f'Taxon name: {data_values["taxon_name"]} ;  ' \
-                                                                                f'Collection: {data_values["collection_access_number"]} ;  ' \
-                                                                                f'Country: {data_values["country"]} '
+                citation_fields[4]["value"][0]["dsDescriptionValue"]["value"] = description
                 # Microorganism keyword
                 citation_fields[6]["value"][0]["keywordValue"]["value"] = data_values["microorg_vocab"]
                 # Microorganism keyword vocabulary
