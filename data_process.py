@@ -90,7 +90,7 @@ def get_data_values(js_file):
                 data_values["country"] = country #4
                 data_values["geographic_origin"] = record_details["Geographic origin"]["Value"]
                 data_values["collector"] = record_details["Collector"]["Value"]
-                data_values["collection_date"] = record_details["Collection date"]["Value"]
+                #data_values["collection_date"] = record_details["Collection date"]["Value"]
                 data_values["isolator"] = record_details["Isolator"]["Value"]
                 data_values["isolation_date"] = record_details["Isolation date"]["Value"]
                 data_values["depositor"] = record_details["Depositor"]["Value"]

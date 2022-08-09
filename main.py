@@ -151,11 +151,11 @@ def set_range_dataset(record_id, record_id_up):
 
 if __name__ == '__main__':
     #pass
-    run = set_one_dataset(25012)
+    run = set_one_dataset(25058)
     #update_dataset(646,"doi:10.82062/MIRRI/JBHH3Y")
     #send_patch_doi(651)
     #print(run)
-    #set_range_dataset(20000,25000)
+    #set_range_dataset(25013,25050)
     # print("Terminé ")
     #dv_client.create_dataset("MIRRI0000007")
 
