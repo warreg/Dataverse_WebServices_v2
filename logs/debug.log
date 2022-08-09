@@ -1,0 +1,11 @@
+2022-08-09 11:42:45,591 - log02 - INFO - PROCESSING RECORD ID 25059
+step 1 - GET STRAIN BY ID: OK
+step 2 - GET DATA VALUES:  OK
+step 3 - UPDATE TEMPLATE:  OK
+step 4 - SET DATASET FILE: OK
+step 5 - CREATE DATASET:   OK
+step 6 - UPLOAD FILE:      OK
+step 7 - PUBLISH DATASET:  OK
+step 8 - PATCH DOI:        OK
+processed time: 0.0 min 2.82 sec
+
