@@ -88,10 +88,10 @@ def set_one_dataset(record_id):
         if (record_id_str) not in ID_db.keys() or ID_db[record_id_str]["published"] == "False":
 
             new_dataset = define_new_dataset(record_id)
-
-            # Patch  DOI
             doi = new_dataset["doi"]
             publi = new_dataset["published"]
+
+            # Patch  DOI
             doi_dict = data_process.update_doi_template(doi)
             patch = bio_client.patch_doi(record_id, doi_dict, publi)
 
@@ -147,17 +147,29 @@ def set_range_dataset(record_id, record_id_up):
     return processed
 
 
+# DEBUGGING LAUNCH PROD
+def launch_debug():
+    log_dir = os.path.join(DIR_PATH,"logs")
+    file = "resume.log"
+    false_tab = []
+
+    with open(f"{log_dir}/{file}","r") as file:
+        records_dic = json.load(file)
+
+        for k, v in records_dic.items():
+            if v["published"] ==  "False":
+                false_tab += [int(k)]
+
+    # for id in false_tab:
+    #     set_one_dataset(id)
+
 
 
 if __name__ == '__main__':
-    #pass
-    run = set_one_dataset(25060)
-    #update_dataset(646,"doi:10.82062/MIRRI/JBHH3Y")
-    #send_patch_doi(651)
-    #print(run)
-    #set_range_dataset(25013,25050)
-    # print("Terminé ")
-    #dv_client.create_dataset("MIRRI0000007")
+
+    #run = set_one_dataset(76515)
+    set_range_dataset(105001,110000)
+    #launch_debug()
 
 
 

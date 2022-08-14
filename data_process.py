@@ -54,11 +54,19 @@ def get_data_values(js_file):
                 contact_email = ""
 
                 # Retrieve contact emails from resource/CONTACT
+                try:
+                    if collection not in CONTACTS.keys():
+                        CONTACTS[collection] = "info@mirri.org"
+                except KeyError:
+                    pass
+
                 for catalog, email in CONTACTS.items():
                     if catalog == collection:
                         contact_email = email
                         if email ==  "":
                             contact_email = "info@mirri.org"
+                    else:
+                        contact_email = "info@mirri.org"
 
                 # Bypass the IndexError that occurs when country field is empty
                 try:
@@ -68,6 +76,10 @@ def get_data_values(js_file):
 
 
                 # ************
+                vocab_link = ""
+                microorg_link = ""
+                microorg_vocab =""
+
                 for vocab,link in VOCABULAR.items():
                     if vocab == organism_type:
                         vocab_link = link
@@ -147,6 +159,7 @@ def update_template(data_values, update=False):
                 citation_fields = template_dict["datasetVersion"]["metadataBlocks"]["citation"]["fields"]
 
                 # ========== If country empty: don't mention it in description =================
+
                 if data_values["country"] == "":
                     description = f'' \
                                                                                 f'Organism type: {data_values["organism_type"]} ;  ' \

@@ -51,6 +51,7 @@ CONTACTS = {
     "MSCL" : "collect@lanet.lv",
     "CBS" : "g.verkleij@wi.knaw.nl",
     "NCCB" : "nccb@wi.knaw.nl",
+    "CBS & NCCB" : "g.verkleij@wi.knaw.nl",
     "IAFB" : "edyta.juszczuk-kubiak@ibprs.pl",
     "KPD" : "",
     "PCM" : "",

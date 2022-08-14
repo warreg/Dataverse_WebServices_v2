@@ -40,7 +40,7 @@ class DataverseClient:
 
             curl_return = curl.stdout.read()
             curl_str = curl_return.decode("UTF-8")
-            #print(file)
+            #print(curl_str)
 
             if curl_str:
                 curl_return_data = ast.literal_eval(curl_str)
@@ -53,6 +53,7 @@ class DataverseClient:
                 else:
                     logger3.error(f"step 5 - Err 3: {traceback.format_exc(0)}")
                     doi = None
+                    #print(curl_return_status)
 
             else:
                 logger3.info(f"step 5 - Err 2: {traceback.format_exc(0)}")
